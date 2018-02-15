@@ -8,7 +8,7 @@ type TrieNode struct {
 	failNode *TrieNode
 }
 
-func newTrie() *TrieNode {
+func newTrieNode() *TrieNode {
 	newRoot := new(TrieNode)
 	newRoot.children = make(map[string]*TrieNode)
 	newRoot.failNode = nil
@@ -26,7 +26,7 @@ func (root *TrieNode) insert(word string) {
 		letter := string(c)
 		_, ok := curNode.children[letter]
 		if !ok {
-			newNode := newTrie()
+			newNode := newTrieNode()
 			newNode.symb = letter
 			curNode.children[letter] = newNode
 		}
@@ -98,7 +98,7 @@ func (root *TrieNode) checkOccurrences(sentence string) map[string][]int {
 }
 
 func AhoCorasick(sentence string, dict []string) map[string][]int {
-	trie := newTrie()
+	trie := newTrieNode()
 	for _, word := range dict {
 		trie.insert(word)
 	}
