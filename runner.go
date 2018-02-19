@@ -3,6 +3,7 @@ package main
 import (
 	"./dp"
 	"./str"
+	ds "./dstructs"
 	"fmt"
 )
 
@@ -22,10 +23,10 @@ func fullRunner() {
 	fmt.Println(dp.LongestCommonSubsequence("gxtxayb", "aggtpanb"))
 	fmt.Println(dp.LongestCommonSubsequence("gxt", "aggt"), "\n")
 
-	fmt.Println(dp.EggDropping(1,6))
-	fmt.Println(dp.EggDropping(2,6))
-	fmt.Println(dp.EggDropping(4,7))
-	fmt.Println(dp.EggDropping(4,100), "\n")
+	fmt.Println(dp.EggDropping(1, 6))
+	fmt.Println(dp.EggDropping(2, 6))
+	fmt.Println(dp.EggDropping(4, 7))
+	fmt.Println(dp.EggDropping(4, 100), "\n")
 }
 
 func main() {
