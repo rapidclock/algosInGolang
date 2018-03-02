@@ -13,7 +13,7 @@ func Multiply2DInt(matA, matB [][]int) ([][]int, error) {
 	chans := make(chan bool, n)
 	for i := 0; i < n; i++ {
 		result[i] = make([]int, m)
-		go singleIntProductT(matA, matB, result, i, m, k1, chans)
+		go rowProduct(matA, matB, result, i, m, k1, chans)
 	}
 	for i := 0; i < n; i++ {
 		<- chans
@@ -21,7 +21,7 @@ func Multiply2DInt(matA, matB [][]int) ([][]int, error) {
 	return result, nil
 }
 
-func singleIntProductT(matA, matB, matC [][]int, i, m, k int, c chan bool) {
+func rowProduct(matA, matB, matC [][]int, i, m, k int, c chan bool) {
 	for j := 0; j < m; j++ {
 		matC[i][j] = singleIntProduct(matA, matB, i, j, k)
 	}
