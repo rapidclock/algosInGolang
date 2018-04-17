@@ -27,3 +27,11 @@ func MinOfTwo(a, b int) int {
 func MinOfThree(a, b, c int) int {
 	return -MaxOfThree(-a, -b, -c)
 }
+
+func Abs(val int) int {
+	if val < 0 {
+		return -val
+	} else {
+		return val
+	}
+}
