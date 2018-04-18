@@ -6,6 +6,7 @@ import (
 	ds "./dstructs"
 	"fmt"
 	"../algosInGolang/extras"
+	"../algosInGolang/graphs"
 )
 
 func fullRunner() {
@@ -31,6 +32,7 @@ func fullRunner() {
 
 	treetest()
 	stableMatchingTest()
+	maxFlowTest()
 }
 
 func treetest() {
@@ -65,6 +67,21 @@ func stableMatchingTest() {
 	}
 	result := extras.StableMatching(men, women)
 	fmt.Println(result)
+}
+
+func maxFlowTest() {
+	g := graphs.NewWeightedDirectedGraph()
+	g.AddWeightedDirectedEdge(0, 1, 10)
+	g.AddWeightedDirectedEdge(0, 2, 10)
+	g.AddWeightedDirectedEdge(2, 1, 1)
+	g.AddWeightedDirectedEdge(2, 3, 10)
+	g.AddWeightedDirectedEdge(1, 3, 10)
+	fmt.Println(g)
+	paths, maxFlow := graphs.FordFulkersonMaxFlow(g, 0, 3)
+	fmt.Println(maxFlow)
+	for _, v := range paths {
+		fmt.Println(v)
+	}
 }
 
 func main() {
