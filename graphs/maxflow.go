@@ -13,7 +13,6 @@ func FordFulkersonMaxFlow(g *WeightedGraph, source, sink Vertex) ([]genutils.Tup
 	for ok, parent := findAugmentedPath(residualNetwork, source, sink);
 		ok; ok, parent = findAugmentedPath(residualNetwork, source, sink) {
 		path, minFlowOnPath := augmentPath(residualNetwork, parent, sink)
-		//fmt.Println(minFlowOnPath)
 		maxFlow += minFlowOnPath
 		augmentedPaths = append(augmentedPaths, genutils.Tuple{X: path, Y: minFlowOnPath})
 	}
