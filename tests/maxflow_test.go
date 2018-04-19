@@ -6,7 +6,7 @@ import (
 )
 
 func TestMaxFlow_EmptyGraph(t *testing.T) {
-	g := graphs.NewWeightedDirectedGraph()
+	g := graphs.NewWeightedGraph()
 	paths, actualMaxFlow := graphs.FordFulkersonMaxFlow(g, nil, nil)
 	expectedMaxFlow, expectedNumOfPaths := 0, 0
 	if actualMaxFlow != expectedMaxFlow {
@@ -21,7 +21,7 @@ func TestMaxFlow_EmptyGraph(t *testing.T) {
 }
 
 func TestMaxFlow_SimpleAdversarialCase(t *testing.T) {
-	g := graphs.NewWeightedDirectedGraph()
+	g := graphs.NewWeightedGraph()
 	g.AddWeightedDirectedEdge(0, 1, 1000)
 	g.AddWeightedDirectedEdge(0, 2, 1000)
 	g.AddWeightedDirectedEdge(2, 1, 1)
@@ -41,7 +41,7 @@ func TestMaxFlow_SimpleAdversarialCase(t *testing.T) {
 }
 
 func TestMaxFlow_MediumExampleStringVertex(t *testing.T) {
-	g := graphs.NewWeightedDirectedGraph()
+	g := graphs.NewWeightedGraph()
 	g.AddWeightedDirectedEdge("S", "b", 4)
 	g.AddWeightedDirectedEdge("b", "a", 2)
 	g.AddWeightedDirectedEdge("b", "c", 1)
@@ -65,7 +65,7 @@ func TestMaxFlow_MediumExampleStringVertex(t *testing.T) {
 }
 
 func TestMaxFlow_MediumExampleWithBackEdge(t *testing.T) {
-	g := graphs.NewWeightedDirectedGraph()
+	g := graphs.NewWeightedGraph()
 	g.AddWeightedDirectedEdge(0, 1, 16)
 	g.AddWeightedDirectedEdge(0, 2, 13)
 	g.AddWeightedDirectedEdge(1, 2, 10)

@@ -33,6 +33,7 @@ func fullRunner() {
 	treetest()
 	stableMatchingTest()
 	maxFlowTest()
+	dijkstraShortestPathTest()
 }
 
 func treetest() {
@@ -70,7 +71,7 @@ func stableMatchingTest() {
 }
 
 func maxFlowTest() {
-	g := graphs.NewWeightedDirectedGraph()
+	g := graphs.NewWeightedGraph()
 	g.AddWeightedDirectedEdge(0, 1, 10)
 	g.AddWeightedDirectedEdge(0, 2, 10)
 	g.AddWeightedDirectedEdge(2, 1, 1)
@@ -82,6 +83,22 @@ func maxFlowTest() {
 	for _, v := range paths {
 		fmt.Println(v)
 	}
+}
+
+func dijkstraShortestPathTest() {
+	graph := graphs.NewWeightedGraph()
+	graph.AddWeightedUndirectedEdge(0, 1, 3)
+	graph.AddWeightedUndirectedEdge(0, 2, 2)
+	graph.AddWeightedUndirectedEdge(0, 3, 4)
+	graph.AddWeightedUndirectedEdge(1, 4, 6)
+	graph.AddWeightedUndirectedEdge(1, 6, 4)
+	graph.AddWeightedUndirectedEdge(2, 4, 5)
+	graph.AddWeightedUndirectedEdge(2, 5, 3)
+	graph.AddWeightedUndirectedEdge(4, 5, 1)
+	graph.AddWeightedUndirectedEdge(3, 4, 3)
+	graph.AddWeightedUndirectedEdge(6, 2, 1)
+	actual := graphs.DijkstraShortestPaths(graph, 0)
+	fmt.Println(actual)
 }
 
 func main() {

@@ -21,7 +21,7 @@ func FordFulkersonMaxFlow(g *WeightedGraph, source, sink Vertex) ([]genutils.Tup
 }
 
 func buildResidualNetwork(g *WeightedGraph) *WeightedGraph {
-	residualNetwork := NewWeightedDirectedGraph()
+	residualNetwork := NewWeightedGraph()
 	for edge, weight := range g.Weights {
 		residualNetwork.AddWeightedDirectedEdge(edge.Source, edge.Destination, weight)
 	}

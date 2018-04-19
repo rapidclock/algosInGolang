@@ -27,14 +27,14 @@ func NewGraph() *Graph {
 	return g
 }
 
-func NewWeightedDirectedGraph() *WeightedGraph {
+func NewWeightedGraph() *WeightedGraph {
 	wg := new(WeightedGraph)
 	wg.Graph = *NewGraph()
 	wg.Weights = make(map[Edge]int)
 	return wg
 }
 
-func (g *Graph) AddEdge(source, destination Vertex) {
+func (g *Graph) AddDirectedEdge(source, destination Vertex) {
 	g.AddVertex(source)
 	g.AddVertex(destination)
 	g.Neighbours[source] = append(g.Neighbours[source], destination)
@@ -51,8 +51,13 @@ func (g *Graph) String() string {
 }
 
 func (g *WeightedGraph) AddWeightedDirectedEdge(source, destination Vertex, weight int) {
-	g.AddEdge(source, destination)
+	g.AddDirectedEdge(source, destination)
 	g.Weights[Edge{Source: source, Destination: destination}] = weight
+}
+
+func (g *WeightedGraph) AddWeightedUndirectedEdge(source, destination Vertex, weight int) {
+	g.AddWeightedDirectedEdge(source, destination, weight)
+	g.AddWeightedDirectedEdge(destination, source, weight)
 }
 
 func (g *WeightedGraph) String() string {
